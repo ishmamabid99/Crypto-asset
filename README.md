@@ -1,7 +1,7 @@
 # Crypto-asset
 A decentralized marketplace for trading property-token using Ethereum
 This project is the beta version of Crypto-Asset and deployed in test RPC-network. So it can't make real transaction on main network. Soon updated version will be released
-# Instalation
+# Installation
 1.clone the project into your local machine 
 
 2.install Ganache from "https://www.trufflesuite.com/ganache". Ganache allows to run local blockchain in your machine .
@@ -14,7 +14,7 @@ This project is the beta version of Crypto-Asset and deployed in test RPC-networ
 
 6.Place your mongoose altas Database clusters link in a file name .env under project root folder.
 
-6.Enjoy
+7.Enjoy
 
 # Dependencies.
   node: Latest version
