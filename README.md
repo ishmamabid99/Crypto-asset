@@ -12,6 +12,8 @@ This project is the beta version of Crypto-Asset and deployed in test RPC-networ
 
 5.install MetaMask Browser extention and configure metamask with ganache custom RPC to associate ganache with your Browser.
 
+6.Place your mongoose altas Database clusters link in a file name .env under project root folder.
+
 6.Enjoy
 
 # Dependencies.
