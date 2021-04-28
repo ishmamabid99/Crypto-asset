@@ -5,8 +5,8 @@ import Footer from '../Footer';
 import About from '../About';
 
 import Services from '../Services';
-import React ,{useState ,useEffect} from 'react'
-import {Route}  from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Route } from 'react-router-dom'
 import axios from 'axios'
 import Web3 from 'web3'
 import '../../App.css';
@@ -25,20 +25,14 @@ async function loadWeb3() {
 function Home() {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-      //  loadWeb3();
-        // axios.get("http://localhost:8080/asset").
-        //     then(res => {
-        //         console.log(res);
-        //         setPosts(res.data)
-        //     })
-        //     .catch(err => console.log(err))
-    },[]);
+        loadWeb3();
+    });
 
     return (
         <>
             <Main />
-            <About/>
-            <Services/>
+            <About />
+            <Services />
         </>
     );
 }

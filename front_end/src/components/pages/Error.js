@@ -7,7 +7,7 @@ export default class Error extends Component {
     render() {
         return (
             <Body>
-                <Banner title="404" subtitle="You're already logged in">
+                <Banner title="404" subtitle="You are not connected to Metamask">
                 <Link to="/" className='btn--outline' buttonSize='medium' >
                     Returm Home
                 </Link>

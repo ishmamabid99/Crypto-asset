@@ -10,10 +10,10 @@ function Bid() {
     useEffect(() => {
         axios.get("http://localhost:8080/asset/bid").
             then(res => {
-                console.log(res.data);
+                
                 setPosts(res.data)
             })
-            .catch(err => console.log(err))
+            .catch(err =>{})
     }, []);
     return (
 

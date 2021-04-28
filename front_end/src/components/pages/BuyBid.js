@@ -14,7 +14,7 @@ function BuyBid() {
     const retrive = () => {
         axios.get(`http://localhost:8080/asset/buybid/${id}`)
             .then(res => setPosts(res.data[0]))
-            .catch(err => console.log(err));
+            .catch(err => {});
 
     }
     useEffect(() => {
@@ -38,33 +38,34 @@ function BuyBid() {
             for (var i = 1; i <= tokens; i++) {
                 const _hash = await contract.methods.getTokenHashID(i).call();
                 const tokenNow = await contract.methods.getSellStatus(posts.seller.toString(), _hash.toString()).call();
-                console.log(_hash, tokenNow);
                 const _name = await contract.methods.getTokenName(_hash).call();
-                console.log(tokenNow);
-                console.log(_name);
-                console.log(amount);
                 if (_name == posts.title) {
-                    console.log(tokenNow);
-                    console.log(amount);
+ 
                     const pr = parseInt(posts.price)
                     const ans = parseInt(amount);
                     const etheer = pr * ans;
-                    console.log("ether")
+
                     await web3.eth.sendTransaction({ from: account[0], to: posts.seller.toString(), value: web3.utils.toWei(etheer.toString(), "ether") });
                     await contract.methods.buyOnBid(posts.seller.toString(), _hash, amount)
                         .send({ from: account[0] })
-                        .once('reciept', (reciept) => console.log(reciept));
+                        .once('reciept', (reciept) =>{});
                     const tokenLeft = await contract.methods.getSellStatus(posts.seller.toString(), _hash.toString()).call();
                     if (tokenLeft == 0) {
                         await axios.delete(`http://localhost:8080/asset/buybid/delete/${id}`)
                             .then(res => window.location.href = "http://localhost:3000/bid")
-                            .catch(err => console.log(err));
+                            .catch(err =>{});
 
                     }
                     else {
                         await axios.put(`http://localhost:8080/asset/bid/update/${id}`, { amount: tokenLeft })
-                            .then(res => window.alert("success"))
-                            .catch(err => console.log(err));
+                            .then(res => Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                                showConfirmButton: false,
+                                timer: 1500
+                              }))
+                            .catch(err => {});
 
                     }
 

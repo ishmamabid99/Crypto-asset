@@ -65,7 +65,7 @@ function OwnerCardItem(props) {
           setOwner(res.data[0].owner);
 
         })
-        .catch(err => console.log(err));
+        .catch(err =>{});
     }
   }
   useEffect(async () => {

@@ -55,7 +55,7 @@ export default function SignUp() {
         setRoadNo(res.data.roadNo);
         setDeed(res.data.deed)
       })
-      .catch(err => console.log(err));
+      .catch(err => {});
   }
   useEffect(() => {
     loadWeb3();
@@ -70,18 +70,16 @@ export default function SignUp() {
     const networkData = TokenAbi.networks[networkId];
     const temp = plot.toString() + postCode.toString() + roadNo.toString() + deed.toString();
     const hash = md5(temp);
-    console.log(hash);
     if (networkData) {
       const address = networkData.address;
       const abi = TokenAbi.abi;
-      console.log(address);
       const contract = new web3.eth.Contract(abi, address);
+      const toAddress = await contract.methods.getTokenOwner(hash).call()
+      const price = (tokenPrice * ammount).toString();
+      await web3.eth.sendTransaction({ from: account[0], to: toAddress, value: web3.utils.toWei(price, "ether") });
       await contract.methods.buyToken(hash, ammount)
         .send({ from: account[0] })
         .once('reciept', (reciept) => window.location.reload(false));
-      const toAddress = await contract.methods.getTokenOwner(hash).call()
-      const price = (tokenPrice * ammount).toString();
-      web3.eth.sendTransaction({ from: account[0], to: toAddress, value: web3.utils.toWei(price, "ether") });
     }
   }
   const handleSubmit = async (e) => {
@@ -92,8 +90,8 @@ export default function SignUp() {
       const newAm = tokenNumber - ammount;
       setTimeout(3000);
       await axios.put(`http://localhost:8080/asset/token/${id}`, { tokenNumber: newAm })
-        .then(res =>{})
-        .catch(err => console.log(err));
+        .then(res => { })
+        .catch(err => {});
     }
     else {
       window.alert("re-check your submission");
@@ -104,15 +102,15 @@ export default function SignUp() {
       <>
         <Body>
 
-          <div style={{width:"630px", textAlign: "center",padding:"15px",marginLeft:"50px", marginTop: "20px",background: 'rgba(0, 0, 0, 0.6)',color: 'white',width:"fit-content"  }}>
-            <h2 style={{color:"beige"}}>Your Current Account</h2><h4>{accountNow}</h4>
+          <div style={{ width: "630px", textAlign: "center", padding: "15px", marginLeft: "50px", marginTop: "20px", background: 'rgba(0, 0, 0, 0.6)', color: 'white', width: "fit-content" }}>
+            <h2 style={{ color: "beige" }}>Your Current Account</h2><h4>{accountNow}</h4>
             <h2> Name : {reqTitle} </h2>
-            <h2 style={{marginTop:"15px",marginBottom:"10px"}}> Owner </h2> <h3>{owner} </h3>
-            <h4 style={{paddingTop:"10px",marginBottom:"10px"}}> Token Price :  {tokenPrice} </h4>
+            <h2 style={{ marginTop: "15px", marginBottom: "10px" }}> Owner </h2> <h3>{owner} </h3>
+            <h4 style={{ paddingTop: "10px", marginBottom: "10px" }}> Token Price :  {tokenPrice} </h4>
             <h4> Token Left : {tokenNumber} </h4>
           </div>
 
-          <form onSubmit={handleSubmit} style={{ margin: "5rem 21rem 4rem",width:"430px",height:"290px",marginRight:"25px" ,marginLeft:"100px"}} encType="multipart/form-data">
+          <form onSubmit={handleSubmit} style={{ margin: "5rem 21rem 4rem", width: "430px", height: "290px", marginRight: "25px", marginLeft: "100px" }} encType="multipart/form-data">
             <div className="form-group">
               <label htmlFor="title">Ammount to buy</label>
               <input onChange={evt => {
@@ -126,7 +124,7 @@ export default function SignUp() {
                 value={check}
                 type="text" className="form-control" placeholder="Re-type token's name to confirm" />
             </div>
-            <button type="submit" className="btn-danger" style={{padding:"10px"}}> Buy Ipo </button>
+            <button type="submit" className="btn-danger" style={{ padding: "10px" }}> Buy Ipo </button>
           </form>
 
         </Body>

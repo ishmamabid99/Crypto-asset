@@ -8,13 +8,13 @@ import Body from './Body'
 function ApproveCardItem(props) {
     const acceptAsset = e => {
         axios.put(`http://localhost:8080/asset/update/${props.path}`).
-            then(res => console.log(res.data)).
-            catch(err => console.log(err));
+            then(res => {}).
+            catch(err =>{});
     }
     const rejectAsset = e => {
         axios.delete(`http://localhost:8080/asset/delete/${props.path}`).
-            then(res => console.log("Deleted Succssfully"))
-            .catch(err => console.log(err));
+            then(res => {})
+            .catch(err => {});
     }
     const path = "asset/" + props.path;
     return (

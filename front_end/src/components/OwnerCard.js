@@ -35,7 +35,7 @@ const OwnedCard = () => {
     async function loadInfo() {
         const web3 = window.web3;
         const account = await web3.eth.getAccounts();
-        console.log(account[0]);
+    
         const networkId = await web3.eth.net.getId();
         const networkData = TokenAbi.networks[networkId];
         if (networkData) {
@@ -48,7 +48,7 @@ const OwnedCard = () => {
                     const hash = await contract.methods.getTokenHashID(i.toString()).call();
                     const num = await contract.methods.showAccountTokens(account[0], i.toString()).call()
                     if (num) {
-                        console.log(num)
+                        
                         arr.push(hash);
                     }
                 }

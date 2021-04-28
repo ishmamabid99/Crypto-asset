@@ -25,7 +25,7 @@ const ProfileCard = ({ posts }) => {
     const getMetaMaskAccount = async () => {
         const web3 = window.web3;
         const account = await web3.eth.getAccounts();
-        console.log(account);
+      
         setAccounts(account[0]);
 
     }

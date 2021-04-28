@@ -14,6 +14,8 @@ contract Token {
     mapping(string => address) owners;
     mapping(uint256 => string) tokenID;
     mapping (string => string) deedHash;
+    mapping (uint256=> bool) deedExist;
+    mapping(string=>bool) deedHashExist;
     mapping (address => mapping(string =>uint256)) onSale;
     mapping(address => mapping(string => uint256)) accountInfo;
     function getAccountTokens(address _address , string memory _hash) public view returns (uint256){
@@ -101,6 +103,8 @@ contract Token {
         require(!hashExist[_hash]);
         require(!tokenExist[_name]);
         require(!symbolExist[_symbol]);
+        require(!deedExist[deed]);
+        require(!deedHashExist[_deedHash]);
         totalSupply += 1;
         tokenID[totalSupply] = _hash;
         tokenName[_hash] = _name;
@@ -111,6 +115,8 @@ contract Token {
         tokenStatus[_hash]=true;
         owners[_hash] = msg.sender;
         tokenDeed[_hash] = deed;
+        deedExist[deed]=true;
+        deedHashExist[_deedHash]=true;
         hashExist[_hash] = true;
         tokenExist[_name] = true;
         symbolExist[_symbol] = true;

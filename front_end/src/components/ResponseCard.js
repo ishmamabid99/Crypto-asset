@@ -22,7 +22,7 @@ const ResponseCard = ({ posts }) => {
     const getMetaMaskAccount = async ()=>{
         const web3 = window.web3;
         const account = await web3.eth.getAccounts();
-        console.log(account);
+       
         setAccounts(account[0]);
 
     }
@@ -42,7 +42,7 @@ const ResponseCard = ({ posts }) => {
                             const temp = post.plot.toString()+post.postCode.toString()+post.roadNo.toString()
                             +post.deed.toString();
                             const hash = md5(temp);
-                            console.log(hash);
+                        
                             return (
                                 <ResponseCardItem
                                     src={src}

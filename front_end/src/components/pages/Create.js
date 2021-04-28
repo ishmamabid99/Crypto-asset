@@ -45,7 +45,7 @@ const Create = () => {
     const getIt = async () => {
         const web3 = window.web3;
         const account = await web3.eth.getAccounts();
-        console.log(account);
+
         setAccounts(account[0]);
     }
     useEffect(() => {
@@ -97,8 +97,7 @@ const Create = () => {
                     if (!err) {
                         const video = res[0].hash;
 
-                        console.log(video);
-                        console.log(hash);
+    
                         const info = {
                             title,
                             symbol,
@@ -133,7 +132,6 @@ const Create = () => {
 
 
                     }
-                    else console.log(err);
                 });
             }
             else {

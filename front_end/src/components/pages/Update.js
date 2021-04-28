@@ -26,7 +26,7 @@ function Update() {
                     + res.data.deed.toString();
                 setHash(md5(temp))
             })
-            .catch(err => console.log(err));
+            .catch(err =>{});
     }
     const loadWeb3 = async () => {
         if (window.ethereum) {
@@ -55,16 +55,16 @@ function Update() {
                 const abi = TokenAbi.abi;
                 const contract = new web3.eth.Contract(abi, address);
                 const toAddress = await contract.methods.getTokenOwner(hash).call();
-                console.log(toAddress);
+              
 
                 await contract.methods.changeOwner(hash, owner)
                     .send({ from: account[0] })
-                    .once('reciept', (reciept) => console.log(reciept));
+                    .once('reciept', (reciept) => {});
                 const toAddress2 = await contract.methods.getTokenOwner(hash).call();
                 axios.put(`http://localhost:8080/asset/owner/${id}`, { owner: owner })
                     .then(res => window.location.href = "http://localhost:3000/profile")
-                    .catch(err => console.log(err));
-                console.log("New ", toAddress2);
+                    .catch(err => {});
+   
             }
         }
         else {
@@ -72,7 +72,7 @@ function Update() {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Token Name Do not matches',
-                footer: '<a href>Why do I have this issue?</a>'
+                footer: '<p>Re-check your submission</p>'
             })
         }
     }

@@ -54,7 +54,7 @@ function Sale() {
                 setRoadNo(res.data.roadNo);
                 setDeed(res.data.deed)
             })
-            .catch(err => console.log(err));
+            .catch(err =>{});
     }
     useEffect(() => {
 
@@ -95,20 +95,19 @@ function Sale() {
             const contract = new web3.eth.Contract(abi, address);
             const tokens = await contract.methods.getAccountTokens(account[0].toString(), hash.toString()).call();
             const status = await contract.methods.getSellStatus(account[0].toString(), hash.toString()).call();
-            console.log(status)
+
             setTokenNumber(tokens);
 
             if ( status == 0) {
                 await contract.methods.putOnSale(account[0].toString(), hash.toString(), amount.toString())
                     .send({ from: account[0] })
-                    .once('reciept', (reciept) => console.log(reciept));
+                    .once('reciept', (reciept) => {});
                 const tmp = new Date().getUTCMilliseconds();
                 const _id = md5(tmp);
                 const link = id;
                 const title = reqTitle;
                 const seller = accountNow;
                 const ammount = amount;
-                console.log(ammount);
                 const sales = {
                     _id, link, title, seller, ammount, price
                 }

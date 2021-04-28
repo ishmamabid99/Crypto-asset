@@ -14,7 +14,6 @@ function Profile() {
     const getMetaMaskAccount = async () => {
         const web3 = window.web3;
         const account = await web3.eth.getAccounts();
-        console.log(account);
         setAccounts(account[0]);
 
     }
@@ -24,7 +23,7 @@ function Profile() {
             then(res => {
                 setPosts(res.data)
             })
-            .catch(err => console.log(err))
+            .catch(err => {})
     }, []);
 
     return (

@@ -20,12 +20,11 @@ function Detail() {
     let [_hash, setHash] = useState('');
     let [_video ,setVideo] = useState('');
     let {id} =useParams();
-    //console.log(id);
     useEffect(()=>{
 
         axios.get(`http://localhost:8080/asset/${id}`)
         .then(res=>{
-            console.log(id)
+
             setTitle(res.data.title);
             setSymbol(res.data.symbol);
             setTokenPrice(res.data.tokenPrice);
@@ -44,7 +43,7 @@ function Detail() {
 
 
         })
-        .catch(err=> console.log(err));
+        .catch(err=>{});
     },[]);
 
     return (

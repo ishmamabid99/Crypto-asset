@@ -25,7 +25,6 @@ function ResponseCardItem(props) {
         loadWeb3();
         const web3 = window.web3;
         const account = await web3.eth.getAccounts();
-        console.log(account);
         setAccounts(account[0]);
         const networkId = await web3.eth.net.getId();
         const networkData = Token.networks[networkId];
@@ -43,13 +42,13 @@ function ResponseCardItem(props) {
                 props.hash,
                 props.deedhash)
                 .send({ from: account[0] })
-                .once('reciept', (reciept) => console.log(reciept));
+                .once('reciept', (reciept) => {});
             setTotalSupply(totalSupply);
             setContract(contract);
             await axios.put(`http://localhost:8080/asset/update/${props.path}`).
                 then(res => window.alert("Check MarketPlace")).
                 catch(err => {
-                    console.log(err);
+                    
                 });
         }
         else {
@@ -60,8 +59,8 @@ function ResponseCardItem(props) {
     const rejectAsset = e => {
         window.location.reload(false);
         axios.delete(`http://localhost:8080/asset/delete/${props.path}`).
-            then(res => console.log("Deleted Succssfully"))
-            .catch(err => console.log(err));
+            then(res =>{})
+            .catch(err =>{});
     }
     const acceptFinale = e => {
         acceptAsset();

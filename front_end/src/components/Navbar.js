@@ -38,15 +38,18 @@ function Navbar() {
     return (
         <>
             <nav className="navbar">
-                <div className="navbar-container ">
-                    <Link to="/" className="navbar-logo"
-                        onClick={closeMobileMenu}>
-                        Crypto-Assets<i className='fab fa-typo3' />
-                    </Link>
 
-                    <div className='menu-icon'
-                        onClick={handleClick}>
-                        <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+                <div className="navbar-container ">
+                    <div>
+                        <Link to="/" className="navbar-logo"
+                            onClick={closeMobileMenu}>
+                            Crypto-Assets<i className='fab fa-typo3' />
+                        </Link>
+
+                        <div className='menu-icon'
+                            onClick={handleClick}>
+                            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+                        </div>
                     </div>
                     <div style={{ paddingLeft: '350px' }}>
                         <ul className={click ? 'nav-menu active' : ' nav-menu'} >

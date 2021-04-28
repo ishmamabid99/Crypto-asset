@@ -13,7 +13,6 @@ router.get("/bid", (req, res) => {
 
 });
 router.get("/buybid/:id", (req, res) => {
-  console.log(req);
   Sale.find({ _id: req.params.id })
     .then(found => res.json(found))
     .catch(err => res.status(400).json(`Error:${err}`));
@@ -28,7 +27,7 @@ router.delete('/buybid/delete/:id', (req, res) => {
 });
 router.put('/bid/update/:id', (req, res) => {
   Sale.findById(req.params.id, (err, found) => {
-    console.log(req.body.amount);
+
     found.amount = req.body.amount;
     found.save((err) => {
       if (!err) {
@@ -48,7 +47,7 @@ router.post("/bid", (req, res) => {
     amount: req.body.ammount,
     price: req.body.price,
   });
-  console.log(item);
+
   item.save()
     .then(() => res.json("Document added successfully"))
     .catch(err => res.status(400).json(`Error:${err}`));
@@ -89,7 +88,6 @@ router.post("/create", (req, res) => {
     video: req.body.video,
     state: 0
   });
-  console.log(item);
   item.save()
     .then(() => res.json("Document added successfully"))
     .catch(err => console.log(err));
@@ -118,7 +116,6 @@ router.put('/update/:id', (req, res) => {
 //
 router.put("/token/:id", (req, res) => {
   Info.findById(req.params.id, (err, found) => {
-    console.log(req.body.tokenNumber);
     found.tokenNumber = req.body.tokenNumber;
     found.save((err) => {
       if (!err) {
@@ -130,7 +127,7 @@ router.put("/token/:id", (req, res) => {
 // 
 router.put("/owner/:id", (req, res) => {
   Info.findById(req.params.id, (err, found) => {
-    console.log(req.body.tokenNumber);
+
     found.owner = req.body.owner;
     found.save((err) => {
       if (!err) {
