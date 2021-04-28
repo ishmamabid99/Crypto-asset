@@ -4,7 +4,7 @@ This project is the beta version of Crypto-Asset and deployed in test RPC-networ
 # Installation
 1.clone the project into your local machine 
 
-2.install Ganache from "https://www.trufflesuite.com/ganache". Ganache allows to run local blockchain in your machine .
+2.install Ganache from https://www.trufflesuite.com/ganache. Ganache allows to run local blockchain in your machine .
 
 3.Head over to project folder and execute $npm install to install Dependencies.
 
@@ -12,7 +12,7 @@ This project is the beta version of Crypto-Asset and deployed in test RPC-networ
 
 5.install MetaMask Browser extention and configure metamask with ganache custom RPC to associate ganache with your Browser.
 
-6.Place your mongoose altas Database clusters link in a file name .env under project root folder.
+6.Place your mongoose altas Database clusters link in a file name .env under project root folder.(learn more https://www.mongodb.com/cloud/atlas2)
 
 7.Enjoy
 
