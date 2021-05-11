@@ -5,7 +5,6 @@ import { useParams } from 'react-router';
 import Web3 from 'web3';
 import TokenAbi from '../abis/Token.json'
 import Swal from 'sweetalert2'
-import Footer from './Footer';
 import Body from './Body';
 function Sale() {
     const [state, setState] = useState(false);
@@ -21,7 +20,6 @@ function Sale() {
     let [postCode, setPostCode] = useState('');
     let [roadNo, setRoadNo] = useState('');
     let [deed, setDeed] = useState('');
-    const [update, setUpdate] = useState(false);
     let { id } = useParams();
 
     const loadWeb3 = async () => {
@@ -99,7 +97,7 @@ function Sale() {
             setTokenNumber(tokens);
 
             if ( status == 0) {
-                await contract.methods.putOnSale(account[0].toString(), hash.toString(), amount.toString())
+                await contract.methods.putOnSale(account[0].toString(), hash.toString(), amount.toString() , price.toString())
                     .send({ from: account[0] })
                     .once('reciept', (reciept) => {});
                 const tmp = new Date().getUTCMilliseconds();

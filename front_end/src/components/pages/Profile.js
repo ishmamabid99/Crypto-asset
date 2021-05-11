@@ -3,11 +3,10 @@ import ProfileCard from '../ProfileCard';
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import axios from 'axios'
-import Web3 from 'web3';
+
 import OwnedCard from '../OwnerCard';
 import Body from '../Body'
-import Banner from '../Banner'
-import Footer from '../Footer';
+
 function Profile() {
     const [accountNow, setAccounts] = useState('');
     const [posts, setPosts] = useState([]);

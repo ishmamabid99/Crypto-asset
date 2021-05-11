@@ -1,7 +1,6 @@
 
 import '../../App.css';
 import ApproveCard from '../ApproveCard';
-import Footer from '../Footer';
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import axios from 'axios'

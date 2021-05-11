@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import styled from 'styled-components'
 import Web3 from 'web3';
 import Token from '../abis/Token.json'
 
@@ -34,13 +33,14 @@ function ResponseCardItem(props) {
             const contract = new web3.eth.Contract(abi, address);
             const totalSupply = await contract.methods.getTotalSupply().call();
 
-            await contract.methods.mint(props.price,
+            await contract.methods.mint(
+                props.price,
                 props.available,
                 props.text,
                 props.symbol,
                 props.deedNo,
                 props.hash,
-                props.deedhash)
+                props.deedhash,)
                 .send({ from: account[0] })
                 .once('reciept', (reciept) => {});
             setTotalSupply(totalSupply);

@@ -16,15 +16,20 @@ contract Token {
     mapping (string => string) deedHash;
     mapping (uint256=> bool) deedExist;
     mapping(string=>bool) deedHashExist;
+    mapping (address => mapping (string =>uint256)) onSalePrice;
     mapping (address => mapping(string =>uint256)) onSale;
     mapping(address => mapping(string => uint256)) accountInfo;
     function getAccountTokens(address _address , string memory _hash) public view returns (uint256){
         return accountInfo[_address][_hash];
     }
-    function putOnSale(address _address , string memory _hash, uint256 _ammount)   public{
+    function putOnSale(address _address , string memory _hash, uint256 _ammount ,uint256 _price)   public{
           require(accountInfo[_address][_hash]>=_ammount);
            onSale[_address][_hash]+=_ammount;
+           onSalePrice[_address][_hash]=_price;
            accountInfo[_address][_hash]-=_ammount;
+    }
+    function getOnSalePrice (address _address , string memory _hash)public view returns(uint256){
+        return onSalePrice[_address][_hash];
     }
     function buyOnBid (address _address , string memory _hash , uint256 amount) public {
             require(onSale[_address][_hash]>=amount);

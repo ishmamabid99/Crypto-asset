@@ -3,7 +3,7 @@ import Cards from '../Cards';
 import React ,{useState ,useEffect} from 'react'
 import {Route}  from 'react-router-dom'
 import axios from 'axios'
-import Footer from '../Footer';
+
 function MarketPlace(){
 
     const [posts, setPosts] = useState([]);

@@ -4,7 +4,7 @@ import './css-files/About.css'
 function About() {
     return (
 
-        <div className="about">
+        <div style={{marginTop:"80px"}} className="about">
             <div className="container">
                 <h1>About Us</h1>
                 <div className="border" style={{ background: "#000",height:"5px" , margin: "10px auto"}}></div>

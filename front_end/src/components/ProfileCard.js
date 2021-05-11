@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
 import ProfileCardItem from './ProfileCardItem';
-import axios from 'axios'
 import './css-files/Cards.css';
-import styled from "styled-components"
+
 import Web3 from 'web3'
 const ProfileCard = ({ posts }) => {
     const [state, setState] = useState(false);

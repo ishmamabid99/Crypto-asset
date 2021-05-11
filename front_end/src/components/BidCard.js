@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from "styled-components";
+
 import './css-files/Cards.css';
-import Footer from './Footer';
+
 function BidCard(props) {
 
     const [video, setVideo] = useState('');

@@ -1,12 +1,9 @@
 import '../../App.css';
 import ResponseCard from '../ResponseCard';
-import Footer from '../Footer';
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import axios from 'axios'
-import Token from '../../abis/Token.json'
 import Web3 from 'web3'
-import Body from '../Body'
 function Response() {
     const [posts, setPosts] = useState([]);
 

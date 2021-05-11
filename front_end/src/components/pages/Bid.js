@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import BidCard from '../BidCard';
-import Footer from '../Footer';
 function Bid() {
     const [posts, setPosts] = useState([]);
     const retrive= async()=>{

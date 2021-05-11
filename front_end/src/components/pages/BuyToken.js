@@ -4,11 +4,8 @@ import { useParams } from 'react-router-dom';
 import '../../App.css';
 import axios from 'axios'
 import Body from '../Body'
-import Banner from '../Banner'
-import Footer from '../Footer';
 import Web3 from 'web3';
 import TokenAbi from "../../abis/Token.json"
-import { set } from 'mongoose';
 var md5 = require('md5');
 export default function SignUp() {
   const [state, setState] = useState(false);
@@ -74,9 +71,11 @@ export default function SignUp() {
       const address = networkData.address;
       const abi = TokenAbi.abi;
       const contract = new web3.eth.Contract(abi, address);
-      const toAddress = await contract.methods.getTokenOwner(hash).call()
-      const price = (tokenPrice * ammount).toString();
+      const toAddress = await contract.methods.getTokenOwner(hash).call();
+      let _price = await contract.methods.getTokenPrice(hash).call();
+      const price = (_price * ammount).toString();
       await web3.eth.sendTransaction({ from: account[0], to: toAddress, value: web3.utils.toWei(price, "ether") });
+      
       await contract.methods.buyToken(hash, ammount)
         .send({ from: account[0] })
         .once('reciept', (reciept) => window.location.reload(false));

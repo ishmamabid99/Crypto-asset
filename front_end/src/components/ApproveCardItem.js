@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import styled from 'styled-components'
-import Body from './Body'
-
-
 function ApproveCardItem(props) {
     const acceptAsset = e => {
         axios.put(`http://localhost:8080/asset/update/${props.path}`).

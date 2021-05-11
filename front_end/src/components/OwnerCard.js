@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
 import OwnerCardItem from './OwnedCardItem';
-import axios from 'axios'
+
 import './css-files/Cards.css';
-import styled from "styled-components"
+
 import Web3 from 'web3'
 import TokenAbi from '../abis/Token.json'
-import e from 'cors';
 const OwnedCard = () => {
     const [state, setState] = useState(false);
     const [accountNow, setAccounts] = useState(undefined);

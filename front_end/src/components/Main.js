@@ -8,7 +8,7 @@ function Main() {
     const loadWeb3 = async () => {
         if (window.ethereum) {
             window.web3 = new Web3(window.ethereum)
-            await window.ethereum.enable()
+            await window.ethereum.enable();
 
         }
         else if (window.web3) {
@@ -18,6 +18,11 @@ function Main() {
         else {
             window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
         }
+    }
+    const loadInfo =async ()=>{
+        await loadWeb3();
+        window.location.href="http://localhost:3000/"
+
     }
     return (
         <div className='main-container'>
@@ -29,7 +34,7 @@ function Main() {
                 <h3 style={{color:"red",marginBottom:"35px"}}>To Explore Connect with MetaMask</h3>
 
                 <div className='main-btn'>
-                    <Button className='btns' buttonStyle='btn--primary'
+                    <Button onClick={loadInfo} className='btns' buttonStyle='btn--primary'
                         buttonSize='btn--large'>
                         GET STARTED
                     </Button>

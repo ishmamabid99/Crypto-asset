@@ -7,7 +7,6 @@ import { useParams } from 'react-router';
 import Web3 from 'web3';
 import TokenAbi from '../../abis/Token.json'
 import Swal from 'sweetalert2'
-import Footer from '../Footer';
 import Body from '../Body';
 function Update() {
     const [check, setCheck] = useState('');

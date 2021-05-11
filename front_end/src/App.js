@@ -10,7 +10,6 @@ import Detail from './components/pages/Detail';
 import Profile from './components/pages/Profile'
 import Apporve from './components/pages/Approve';
 import Update from './components/pages/Update';
-import Error from './components/pages/Error';
 import Responses from './components/pages/Responses';
 import Sale from './components/Sale';
 import Bid from './components/pages/Bid'
@@ -36,7 +35,6 @@ function App() {
           <Route path='/update/:id' exact component={Update} />
           <Route path='/sale/:id' exact component={Sale} />
           <Route path='/buybid/:id' exact component={BuyBid} />
-          <Route component={Error} />
         </Switch>
       </div>
       <Footer />

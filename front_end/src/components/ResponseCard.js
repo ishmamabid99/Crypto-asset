@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
 import ResponseCardItem from './ResponseCardItem';
 import './css-files/ApproveCard.css';
-import styled from 'styled-components'
+
 import Web3 from 'web3' ;
 var md5 = require('md5');
 const ResponseCard = ({ posts }) => {  

@@ -41,7 +41,8 @@ function BuyBid() {
                 const _name = await contract.methods.getTokenName(_hash).call();
                 if (_name == posts.title) {
  
-                    const pr = parseInt(posts.price)
+                    let pr = await contract.methods.getOnSalePrice (posts.seller.toString(),_hash).call();
+                    pr = parseInt(pr);
                     const ans = parseInt(amount);
                     const etheer = pr * ans;
 
@@ -61,7 +62,7 @@ function BuyBid() {
                             .then(res => Swal.fire({
                                 position: 'top-end',
                                 icon: 'success',
-                                title: 'Your work has been saved',
+                                title: 'Successful transaction',
                                 showConfirmButton: false,
                                 timer: 1500
                               }))
@@ -71,7 +72,12 @@ function BuyBid() {
 
                 }
                 else {
-                    window.alert("Bad Request");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                        footer: '<p>Re-check your submission</p>'
+                      })
                 }
 
             }
@@ -81,7 +87,7 @@ function BuyBid() {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Something went wrong!',
-                footer: '<a href>Why do I have this issue?</a>'
+                footer: '<p>Re-check your submission</p>'
               })
           }
 

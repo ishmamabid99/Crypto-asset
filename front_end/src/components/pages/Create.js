@@ -5,7 +5,7 @@ import Web3 from 'web3'
 import Swal from 'sweetalert2'
 import Body from '../Body'
 import Banner from '../Banner'
-import Footer from '../Footer';
+
 import '../css-files/Create.css'
 
 const ipfsAPI = require('ipfs-api');
