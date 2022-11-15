@@ -1,5 +1,5 @@
 # Crypto-asset
-A decentralized marketplace for trading property-token using Ethereum
+A decentralized marketplace for trading property-token using Ethereum where users may purchase and sell entire properties or just a fraction of them.
 This project is the beta version of Crypto-Asset and deployed in test RPC-network. So it can't make real transaction on main network. Soon updated version will be released
 # Installation
 1.clone the project into your local machine 
